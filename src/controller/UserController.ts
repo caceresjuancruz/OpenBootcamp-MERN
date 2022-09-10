@@ -54,28 +54,6 @@ export class UserController implements IUserController {
     }
 
     /**
-     * Endpoint to create a new user
-     * @returns message informing if creation of user was correct
-     */
-    @Post("/")
-    public async createUser(@Query()user: any): Promise<any> {
-        
-       let response: any = "";
-       await createUser(user)
-       .then((r) => {
-           LogSuccess(`[/api/users] Create user: ${user}`);
-           response = {
-                message: `User ${user.name} successfully created!`
-           }
-       })
-       .catch((err) => {
-           LogError(`[CONTROLLER ERROR]: ${err}`); 
-       })
-       
-       return response;
-    }
-
-    /**
      * Endpoint to update an user by ID
      * @param {string} id Id of user to update (optional)
      * @returns message informing if update of user was correct 
